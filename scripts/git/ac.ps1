@@ -1,6 +1,12 @@
 param (
-    [switch] $noPush = $false
+    [switch] $p = $false
 )
+
+if ($p) {
+    $push = !$defaultPush
+} else {
+    $push = $defaultPush
+}
 
 $commitMessage = $args[0]
 
@@ -10,7 +16,7 @@ if (!$commitMessage) {
 
 git add -A
 git commit -m "$commitMessage"
-if (!$noPush) {
+if ($push) {
     git push
 }
 

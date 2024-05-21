@@ -1,5 +1,5 @@
 param (
-    [switch] $remote = $false,
+    [switch] $remote = $true,
     [switch] $force = $false
 )
 

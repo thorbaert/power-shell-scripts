@@ -1,6 +1,13 @@
 param (
     [switch] $stage = $false
+    [switch] $p = $false
 )
+
+if ($p) {
+    $push = !$defaultPush
+} else {
+    $push = $defaultPush
+}
 
 $branchName = $args[0]
 $commitMessage = $args[1]
@@ -45,7 +52,9 @@ if ($canSquash) {
 
     if(!$stage) {
         git commit -m $commitMessage
-        git push -f
+        if ($push) { 
+            git push -f
+        }
     } else {
         Write-Output $commitMessage
     }

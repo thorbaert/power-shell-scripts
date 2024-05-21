@@ -1,5 +1,7 @@
 if($host.version.major -eq 5) { $IsWindows = $true }
 
+$defaultPush = $false
+
 # Config Vars
 if (Test-Path "$PSScriptRoot\local.ps1") { Import-Module "$PSScriptRoot\local.ps1" }
 if (Test-Path "$PSScriptRoot\test.ps1") { New-Alias test "$PSScriptRoot\test.ps1" }
