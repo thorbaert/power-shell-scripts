@@ -1,5 +1,5 @@
 param (
-    [switch] $stage = $false
+    [switch] $stage = $false,
     [switch] $p = $false
 )
 
