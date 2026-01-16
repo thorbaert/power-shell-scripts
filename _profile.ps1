@@ -71,5 +71,5 @@ Remove-Variable dir
 if(!$IsWindows) {
     Set-PSReadlineKeyHandler -Key Tab -Function TabCompleteNext
     function ll {ls -la}
-    function ls {ls -la}
+    function la {ls -a}
 }
