@@ -4,7 +4,11 @@ function touch($fileName) {
 }
 
 function rmrf {
-    rm -Recurse -Force $args
+    if($IsWindows) {
+        rm -Recurse -Force $args
+    } else {
+        rm -rf $args
+    }
 }
 
 function isAdmin {
