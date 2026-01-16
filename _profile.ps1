@@ -13,6 +13,9 @@ if($PSStyle){
 # Local executables
 $Env:Path += ";$PSScriptRoot\local"
 
+if(!$poshPath) {
+    $poshPath = 'C:\tools\posh-git\src\posh-git.psm1'
+}
 # Import configs
 Get-ChildItem "$PSScriptRoot\configs" -Filter *.ps1 | Foreach-Object {
     Import-Module $_.FullName
@@ -67,4 +70,6 @@ Remove-Variable dir
 
 if(!$IsWindows) {
     Set-PSReadlineKeyHandler -Key Tab -Function TabCompleteNext
+    function ll {ls -la}
+    function ls {ls -la}
 }
