@@ -1,3 +1,5 @@
+Import-Module PSReadLine
+[Environment]::SetEnvironmentVariable('POWERSHELL_UPDATECHECK', 'Off', 'User')   
 if($host.version.major -eq 5) { $IsWindows = $true }
 
 $defaultPush = $false
@@ -68,8 +70,11 @@ Remove-Variable alias
 Remove-Variable prefix
 Remove-Variable dir
 
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadLineOption -PredictionViewStyle ListView
+
 if(!$IsWindows) {
-    Set-PSReadlineKeyHandler -Key Tab -Function TabCompleteNext
     function ll {ls -la}
     function la {ls -a}
 }
