@@ -19,7 +19,7 @@ if ($LASTEXITCODE -eq 0) {
 }
 
 # Create new session with opencode running in the left pane.
-tmux new-session -d -s $sessionName -n "dev" -c "/home/joshua" "opencode web --port 4096"
+tmux new-session -d -s $sessionName -n "dev" -c "/home/joshua" "opencode serve --port 4096 --hostname 0.0.0.0"
 
 # Split window horizontally for side by side and start the local app.
 tmux split-window -h -t "$sessionName:0" -c "/home/joshua/code/work/llm-usage" "yarn start:local"
